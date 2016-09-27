@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Restaurant_list resource:
+  # CREATE
+  get "/restaurant_lists/new", :controller => "restaurant_lists", :action => "new"
+  post "/create_restaurant_list", :controller => "restaurant_lists", :action => "create"
+
+  # READ
+  get "/restaurant_lists", :controller => "restaurant_lists", :action => "index"
+  get "/restaurant_lists/:id", :controller => "restaurant_lists", :action => "show"
+
+  # UPDATE
+  get "/restaurant_lists/:id/edit", :controller => "restaurant_lists", :action => "edit"
+  post "/update_restaurant_list/:id", :controller => "restaurant_lists", :action => "update"
+
+  # DELETE
+  get "/delete_restaurant_list/:id", :controller => "restaurant_lists", :action => "destroy"
+  #------------------------------
+
   # Routes for the Neighborhood resource:
   # CREATE
   get "/neighborhoods/new", :controller => "neighborhoods", :action => "new"

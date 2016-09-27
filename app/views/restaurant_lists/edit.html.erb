@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @restaurant_list.errors.any? %>
+  <% @restaurant_list.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Restaurant List #<%= @restaurant_list.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_restaurant_list/<%= @restaurant_list.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for restaurant_name -->
+      <div class="form-group">
+        <label for="restaurant_name" class="control-label">
+          Restaurant name
+        </label>
+
+        <input type="text" id="restaurant_name" name="restaurant_name" placeholder="Restaurant name" class="form-control" value="<%= @restaurant_list.restaurant_name %>">
+      </div>
+
+      <!-- Label and input for address -->
+      <div class="form-group">
+        <label for="address" class="control-label">
+          Address
+        </label>
+
+        <input type="text" id="address" name="address" placeholder="Address" class="form-control" value="<%= @restaurant_list.address %>">
+      </div>
+
+      <!-- Label and input for cover_photo -->
+      <div class="form-group">
+        <label for="cover_photo" class="control-label">
+          Cover photo
+        </label>
+
+        <input type="text" id="cover_photo" name="cover_photo" placeholder="Cover photo" class="form-control" value="<%= @restaurant_list.cover_photo %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Restaurant List
+      </button>
+      or
+      <a href="/restaurant_lists/<%= @restaurant_list.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
